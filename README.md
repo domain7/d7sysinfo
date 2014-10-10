@@ -20,7 +20,11 @@ Or install it yourself as:
 
 ## Usage
 
-d7sysinfo --format json    # will output server information
+```ruby
+d7sysinfo --format json
+```
+
+Will output following server information:
 
 ```json
 {
