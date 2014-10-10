@@ -44,13 +44,20 @@ module D7sysinfo
     end
 
     def drupal
-      bootstrap = @docroot + "includes/bootstrap.inc"
-      File.file?(bootstrap) && File.open(bootstrap).grep(/VERSION/).first.gsub(/[^0-9\.]/,'')
+      bootstrap = @docroot + "/includes/bootstrap.inc"
+      system = @docroot + "/modules/system/system.info"
+      if (File.file?(system))
+        File.open(system).grep(/version = "[0-9\.]+"/).first.gsub(/[^0-9\.]/,'')
+      elsif (File.file?(bootstrap))
+        File.open(bootstrap).grep(/VERSION/).first.gsub(/[^0-9\.]/,'')
+      else
+        false
+      end
     end
 
     def wordpress
-      verfile = @docroot + "wp-includes/version.php"
-      File.file?(verfile) && File.open(verfile).grep(/wp_version/).first.gsub(/[^0-9\.]/,'')
+      verfile = @docroot + "/wp-includes/version.php"
+      File.file?(verfile) && File.open(verfile).grep(/^\$wp_version/).first.gsub(/[^0-9\.]/,'')
     end
 
     def vhost_path
