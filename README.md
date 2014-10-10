@@ -20,7 +20,50 @@ Or install it yourself as:
 
 ## Usage
 
-d7sysinfo --json will output server information
+d7sysinfo --format json    # will output server information
+
+```json
+{
+    "fqdn": "example.com",
+    "ips": [
+        "127.0.0.1",
+        "10.8.8.99",
+        "192.168.0.99"
+    ],
+    "kernel_version": "3.08",
+    "linux_type": "Fedora",
+    "linux_version": "18",
+    "memory": "1000000kB",
+    "php_version": "4.5",
+    "ruby_version": "1.8.2",
+    "vhosts": {
+        "drupal.conf": {
+            "docroot": "/var/www/drupal/",
+            "drupal": "1.1.1",
+            "names": "drupal.example.com",
+            "rails": false,
+            "ssl": false,
+            "wordpress": false
+        },
+        "rails.conf": {
+            "docroot": "/var/www/rails/public/",
+            "drupal": false,
+            "names": "rails.example.com",
+            "rails": "rails (2.14)",
+            "ssl": true,
+            "wordpress": false
+        },
+        "wordpress.conf": {
+            "docroot": "/var/www/wordpress/",
+            "drupal": false,
+            "names": "wordpress.example.com",
+            "rails": false,
+            "ssl": false,
+            "wordpress": "7.7.7"
+        }
+    }
+}
+```
 
 ## Prerequisites
  * uri
