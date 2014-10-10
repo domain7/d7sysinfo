@@ -17,7 +17,8 @@ module D7sysinfo
           docroot:   find_docroot,
           rails:     rails,
           drupal:    drupal,
-          wordpress: wordpress
+          wordpress: wordpress,
+          ee: ee
         }
       end
       @node
@@ -58,6 +59,11 @@ module D7sysinfo
     def wordpress
       verfile = @docroot + "/wp-includes/version.php"
       File.file?(verfile) && File.open(verfile).grep(/^\$wp_version/).first.gsub(/[^0-9\.]/,'')
+    end
+
+    def ee
+      verfile = @docroot + "/system/expressionengine/config/config.php"
+      File.file?(verfile) && File.open(verfile).grep(/app_version/).first.gsub(/[^0-9]/,'')
     end
 
     def vhost_path
