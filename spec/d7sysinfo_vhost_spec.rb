@@ -5,4 +5,5 @@ describe D7sysinfo::Vhost do
   it { expect(subject['rails.conf'][:rails]).to eq 'rails (3.3.3)' }
   it { expect(subject['drupal.conf'][:drupal]).to eq '1.1.1' }
   it { expect(subject['drupal2.conf'][:drupal]).to eq '7.26' }
+  it { expect(subject['ee.conf'][:ee]).to eq '255' }
 end
