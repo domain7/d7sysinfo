@@ -41,7 +41,12 @@ module D7sysinfo
 
     def rails
       gemfile = @docroot.gsub(/public/,'').strip + "Gemfile.lock"
-      File.file?(gemfile) && File.open(gemfile).grep(/^\s*rails .[0-9]/).first.strip
+      if File.file?(gemfile)
+        f = File.open(gemfile).grep(/^\s*rails .[0-9]/)
+        f.size > 0 && f.first.strip
+      else
+        false
+      end
     end
 
     def drupal
